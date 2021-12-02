@@ -1,5 +1,4 @@
 # Vue.js Cinema
-
 Source code for the case-study project from the course [Build A Vue.js Single-Page App with Vue Router](https://courses.vuejsdevelopers.com/p/build-a-single-page-app-vue-router-vue-cli?utm_source=github-vjd)
 
 #### Demo
