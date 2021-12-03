@@ -15,4 +15,7 @@ function checkFilterMethodRoot(category,title,checked){
     }
    // console.log(category,title,checked)
 }
-export {checkFilterMethodRoot};
+function setDay(day){
+    this.day= day
+}
+export {checkFilterMethodRoot, setDay};

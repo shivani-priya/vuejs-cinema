@@ -3,11 +3,18 @@
             <div v-if="filteredMovies.length">
                  <movie-item v-for="movie in filteredMovies"
                   v-bind:movie="movie.movie"
-                   v-bind:sessions="movie.sessions"
-                   v-bind:day="day"
-                   v-bind:time="time"
-                   v-bind:key="movie._offset"
-                   >
+                    v-bind:key="movie._offset">
+                   
+                   <!-- v-bind:sessions="movie.sessions"
+                   v-bind:day="day" Removed from Top
+                   v-bind:time="time" -->
+                   <div class="movie-sessions">
+                        <div v-for="session in filteredSessions(movie.sessions)" class="session-time-wrapper" >
+                            <div class="session-time" >
+                        {{formatSessionTime(session.time)}}
+                            </div>
+                    </div>
+                </div>
 
                  </movie-item>
 
@@ -39,6 +46,29 @@ export default {
             // },
             props:['genre','time','movies','day'],
             methods:{
+                 formatSessionTime(time){
+               return this.$moment(time).format('h:mm A')
+            },
+            filteredSessions(sessions){
+                return sessions.filter(this.sessionPassesTimeFilter)
+                //     session=>{
+                //     return this.$moment(session.time).isSame(this.day,'day')
+                // });
+                
+            },
+            //  sessionPassesTimeFilter(session){
+            //         if(!this.day.isSame(this.$moment(session.time),'day')){
+            //             return false;
+            //         }else if(this.time.length ===0 || this.time.length ===2){
+            //             return true;
+            //         }else if(this.time[0]===times.AFTER_6PM){
+            //           return this.$moment(session.time).hour()>=18;
+            //         }else{
+            //           return this.$moment(session.time).hour()<18;
+
+            //         }
+            //         //return true;
+            //     },
                 moviePassesGenreFilter(movie){
                     if(!this.genre.length){
                         return true;
