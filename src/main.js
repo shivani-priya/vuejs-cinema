@@ -20,6 +20,8 @@ Vue.use(VueRouter)
 
 import routes from "./util/routes";
 
+import Tooltip from "./util/tooltip"
+Vue.use(Tooltip);
 
 const router= new VueRouter({ routes });
     // {path: '/', component:Overview}
@@ -53,3 +55,7 @@ new Vue({
 ///Using {{genre}} simply inside check-filter tag wont work as Vue would not know what to print?
 //Confused b/w genre and line 46; inside div i.e Filter.
 //So we use props here
+
+//
+
+
